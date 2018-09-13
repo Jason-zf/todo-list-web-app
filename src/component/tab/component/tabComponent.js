@@ -6,11 +6,11 @@ class TabComponent extends React.Component {
         return (
             <div>
                 <TabController>
-                    <div name="tabA">
-                        tabA is very good
+                    <div name="To dos">
+
                     </div>
-                    <div name="tabB">
-                        tabB is very good
+                    <div name="Statistic">
+                        
                     </div>
                 </TabController>
             </div>

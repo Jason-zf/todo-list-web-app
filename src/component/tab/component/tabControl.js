@@ -1,5 +1,5 @@
 import React from "react";
-import './tabControl.css'
+import '../css/tabControl.css'
 import {Tab, Tabs} from "react-bootstrap";
 
 class TabController extends React.Component {
