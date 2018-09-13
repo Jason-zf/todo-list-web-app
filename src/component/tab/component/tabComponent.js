@@ -2,6 +2,7 @@ import React from "react";
 import TabController from "./tabControl";
 import TableComponent from '../../table'
 import SearchComponent from '../../search'
+import PieChartComponent from '../../chart'
 
 class TabComponent extends React.Component {
     render() {
@@ -22,12 +23,21 @@ class TabComponent extends React.Component {
                         </div>
                     </div>
                     <div name="Statistic">
-
-                    </div>
+                        <div className='searchContainer'>
+                            <SearchComponent/>
+                            <div className='pieChartContainer'>
+                                <div className='pieChart'>
+                                    <PieChartComponent/>
+                                </div>
+                                <div className='pieChart'>
+                                    <PieChartComponent/>
+                                </div>
+                            </div>
+                        </div>
                 </TabController>
             </div>
-        )
+    )
     }
-}
+    }
 
-export default TabComponent;
+    export default TabComponent;

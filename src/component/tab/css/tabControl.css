@@ -4,11 +4,18 @@
     height: 800px;
 }
 
-.searchContainer{
+.searchContainer {
     margin: 20px;
     width: 60%;
 }
 
-.tableContainer{
+.tableContainer {
     margin: 20px;
+}
+
+.pieChart {
+    margin: 20px;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
 }
