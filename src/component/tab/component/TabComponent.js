@@ -1,5 +1,5 @@
 import React from "react";
-import TabController from "./tabControl";
+import TabController from "./TabControl";
 import TableComponent from '../../table'
 import SearchComponent from '../../search'
 import PieChartComponent from '../../chart'
@@ -25,19 +25,20 @@ class TabComponent extends React.Component {
                     <div name="Statistic">
                         <div className='searchContainer'>
                             <SearchComponent/>
-                            <div className='pieChartContainer'>
-                                <div className='pieChart'>
-                                    <PieChartComponent/>
-                                </div>
-                                <div className='pieChart'>
-                                    <PieChartComponent/>
-                                </div>
+                        </div>
+                        <div className='pieChartContainer'>
+                            <div className='pieChart'>
+                                <PieChartComponent/>
+                            </div>
+                            <div className='pieChart'>
+                                <PieChartComponent/>
                             </div>
                         </div>
+                    </div>
                 </TabController>
             </div>
-    )
+        )
     }
-    }
+}
 
-    export default TabComponent;
+export default TabComponent;

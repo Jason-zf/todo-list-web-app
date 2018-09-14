@@ -12,7 +12,7 @@ class SearchComponent extends React.Component {
                 <FormGroup>
                     <InputGroup>
                         <InputGroup.Addon><span className='glyphicon glyphicon-search'></span></InputGroup.Addon>
-                        <FormControl type="text" bsSize='small'/>
+                        <FormControl type="text" placeholder='Search...'/>
                     </InputGroup>
                 </FormGroup>
             </div>

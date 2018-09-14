@@ -19,3 +19,8 @@
     height: 400px;
     margin: 0 auto;
 }
+
+.pieChartContainer {
+    width: calc(100% - 40px);
+    height: 100%;
+}

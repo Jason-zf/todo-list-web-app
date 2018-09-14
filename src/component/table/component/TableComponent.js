@@ -1,7 +1,8 @@
 import React from "react";
 import {Button, Table} from "react-bootstrap";
 import '../css/table.css'
-import SortBtn from "./sortBtn";
+import SortBtn from "./SortBtn";
+import AddTableRowButton from "./AddTableRowButton";
 
 class TableComponent extends React.Component {
     constructor() {
@@ -22,6 +23,10 @@ class TableComponent extends React.Component {
         )
     }
 
+    onClickBtn() {
+        console.log("fun");
+    }
+
     render() {
         return (
             <Table striped bordered condensed hover>
@@ -30,10 +35,17 @@ class TableComponent extends React.Component {
                 {this.props.children && this.props.children.map(item => (
                     <tr>
                         {Object.values(item).map(value => (<td>{value}</td>))}
-                        <td><span className='detailSpan'>detail</span><Button bsClass='deleteBtn'>delete</Button></td>
+                        <td><span className='detailSpan'>detail</span><Button bsClass='deleteBtn' onClick={() => {
+                            this.onClickBtn()
+                        }}>delete</Button></td>
                     </tr>
                 ))}
+                <tr>
+                    <td colspan='5'><AddTableRowButton/></td>
+                </tr>
+
                 </tbody>
+
             </Table>
         )
     }

@@ -4,6 +4,7 @@
     border: none;
     text-align: left;
     background-color: inherit;
+    outline: none;
 }
 
 .detailSpan {
@@ -17,4 +18,14 @@
     border: none;
     text-align: center;
     background-color: inherit;
+    outline: none;
 }
+
+.addTableRowBtn {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: inherit;
+    outline: none;
+}
+
