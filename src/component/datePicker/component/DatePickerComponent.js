@@ -36,11 +36,10 @@ class DatePickerComponent extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div>
                 {
-                    this.props.dateRange===false &&
+                    !this.props.dateRange &&
                     <div className='startDatePickerBox'>
                         <DatePicker
                             dateFormat='YYYY/MM/DD'

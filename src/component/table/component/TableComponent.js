@@ -3,11 +3,9 @@ import {Button, Table} from "react-bootstrap";
 import '../css/table.css'
 import SortBtn from "./SortBtn";
 import AddTableRowButton from "./AddTableRowButton";
+import {Link} from "react-router-dom";
 
 class TableComponent extends React.Component {
-    constructor() {
-        super();
-    }
 
     renderHeader() {
         return (
@@ -35,9 +33,14 @@ class TableComponent extends React.Component {
                 {this.props.children && this.props.children.map(item => (
                     <tr>
                         {Object.values(item).map(value => (<td>{value}</td>))}
-                        <td><a className='detailSpan'>detail</a><a bsclass='deleteBtn' onClick={() => {
-                            this.onClickBtn()
-                        }}>delete</a></td>
+                        <td>
+                            <div className='detailContainer'>
+                                <Link to='/detail'>detail</Link>
+                            </div>
+                            <Button bsClass='deleteBtn'
+                                    onClick={() => {
+                                        this.onClickBtn()
+                                    }}>delete</Button></td>
                     </tr>
                 ))}
                 <tr>

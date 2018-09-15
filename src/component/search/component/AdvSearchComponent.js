@@ -5,10 +5,6 @@ import SelectorComponent from "../../selector/";
 import {Button} from "react-bootstrap";
 
 class AdvSearchComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='advSearchBox'>
@@ -19,10 +15,18 @@ class AdvSearchComponent extends React.Component {
                     <SelectorComponent/>
                 </div>
                 <div className='advSearchBtnBox'>
-                    <Button>Ok</Button><Button>Cancel</Button>
+                    <Button onClick={this.onClickOk()}>Ok</Button><Button onClick={this.onClickCancel()}>Cancel</Button>
                 </div>
             </div>
         )
+    }
+
+    onClickOk() {
+        return undefined;
+    }
+
+    onClickCancel() {
+        return undefined;
     }
 }
 

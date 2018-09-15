@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, ControlLabel, FormControl, FormGroup, InputGroup} from "react-bootstrap";
+import {FormControl, FormGroup, InputGroup} from "react-bootstrap";
 import '../css/search.css'
 import AdvSearchComponent from "./AdvSearchComponent";
 

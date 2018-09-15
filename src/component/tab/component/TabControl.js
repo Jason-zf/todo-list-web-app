@@ -12,7 +12,6 @@ class TabController extends React.Component {
     }
 
     handleSelect(key) {
-        console.log(key);
         this.setState({currentIndex: key});
     }
 
