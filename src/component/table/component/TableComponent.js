@@ -35,17 +35,15 @@ class TableComponent extends React.Component {
                 {this.props.children && this.props.children.map(item => (
                     <tr>
                         {Object.values(item).map(value => (<td>{value}</td>))}
-                        <td><span className='detailSpan'>detail</span><Button bsClass='deleteBtn' onClick={() => {
+                        <td><a className='detailSpan'>detail</a><a bsclass='deleteBtn' onClick={() => {
                             this.onClickBtn()
-                        }}>delete</Button></td>
+                        }}>delete</a></td>
                     </tr>
                 ))}
                 <tr>
-                    <td colspan='5'><AddTableRowButton/></td>
+                    <td colSpan='5'><AddTableRowButton/></td>
                 </tr>
-
                 </tbody>
-
             </Table>
         )
     }

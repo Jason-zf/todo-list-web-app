@@ -9,7 +9,7 @@ class AddTableRowButton extends React.Component {
     render() {
         return (
             <div>
-                <Button bsClass='addTableRowBtn'>+</Button>
+                <Button bsClass='addTableRowBtn'><span className='glyphicon glyphicon-plus'></span></Button>
             </div>
         )
     }

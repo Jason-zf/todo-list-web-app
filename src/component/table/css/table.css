@@ -8,15 +8,15 @@
 }
 
 .detailSpan {
-    text-align: center;
+    width: 50%;
     background-color: inherit;
+    text-align: left;
 }
 
 .deleteBtn {
-    width: 30%;
-    height: 100%;
+    width: 50%;
     border: none;
-    text-align: center;
+    text-align:right;
     background-color: inherit;
     outline: none;
 }

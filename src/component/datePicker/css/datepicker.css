@@ -1,0 +1,15 @@
+.datePickerBox {
+    margin: 20px;
+    height: 50px;
+    width: 50px;
+}
+
+.startDatePickerBox {
+    margin: 20px;
+    float: left;
+}
+
+.endDatePickerBox {
+    margin: 20px;
+    float: left;
+}
