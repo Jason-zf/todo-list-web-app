@@ -13,6 +13,23 @@
 .advSearchBox {
     clear: both;
     width: 100%;
-    height: 300px;
+    height: 200px;
     border: solid black 1px;
+}
+
+.dateBox {
+    margin-left: 200px;
+    width: 60%;
+}
+
+.selectorBox {
+    clear: both;
+    margin-left: 200px;
+    width: 60%;
+}
+
+.advSearchBtnBox{
+    margin-right: 10px;
+    margin-top:50px;
+    float: right;
 }
