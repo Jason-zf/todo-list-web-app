@@ -24,7 +24,13 @@ const reducer = (state = initState, action) => {
         case 'DELETE_TODO':
             return state;
         case 'CHANGE_CURRENT_ID':
+            debugger
             let currentId = action.currentId;
+            state.item.action = state.formItems[currentId].action;
+            state.item.status = state.formItems[currentId].status;
+            state.item.dueDate = state.formItems[currentId].dueDate;
+            state.item.tags = state.formItems[currentId].tags;
+            state.item.id = currentId;
             return {...state, currentId};
         default:
             return state;

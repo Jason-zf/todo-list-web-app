@@ -44,6 +44,7 @@ class DetailComponent extends React.Component {
             item = this.props.formItems[id];
             title += '-' + item.action;
             this.props.onChangeCurrentId(id);
+
         }
         return (
             <div className='detailPage'>
