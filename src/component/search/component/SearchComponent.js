@@ -1,7 +1,7 @@
 import React from "react";
 import {FormControl, FormGroup, InputGroup} from "react-bootstrap";
 import '../css/search.css'
-import AdvSearchComponent from "./AdvSearchComponent";
+import AdvSearchComponent from "../advacneSearch/";
 
 class SearchComponent extends React.Component {
     constructor(props) {

@@ -31,6 +31,7 @@ class SelectorComponent extends React.Component {
             this.props.item.status = selectedOption.label;
         } else {
             this.props.item.tags = selectedOption.map(value => value.label);
+            this.props.advSearch.tags = selectedOption.map(value => value.label);
         }
     };
 

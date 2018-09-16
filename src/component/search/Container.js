@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 const mapDispatchToProps = (dispatch) => ({
     updateSearchedFormItems: (keywords) => dispatch({
-        type: 'UPDATE_SEARCHED_FORM_ITEMS',
+        type: 'SIMPLE_SEARCH',
         keywords: keywords
     })
 });

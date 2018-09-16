@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const initState = {
     formItems: [],
     item: {id: 0, action: '', tags: [], dueDate: '', status: ''},
@@ -9,6 +11,11 @@ const initState = {
     searchResult: {
         isShowSearchResult: false,
         searchedFormItems: []
+    },
+    advSearch: {
+        tags: [],
+        startDate: null,
+        endDate: null
     }
 };
 
@@ -19,6 +26,8 @@ function addOrUpdateToDoList(state, action) {
     } else {
         formItems[action.currentId] = action.item;
     }
+    state.item = {};
+    state.advSearch.tags = [];
     return formItems;
 }
 
@@ -60,16 +69,34 @@ const changeOutDateStatisticData = (state, action) => {
 const updateSearchedFormItems = (state, action) => {
     if (action.keywords === '') {
         return {isShowSearchResult: false, searchedFormItems: []};
-    } else {
-        return {
-            isShowSearchResult: true,
-            searchedFormItems: [...state.formItems.filter(value => value.action.includes(action.keywords))]
-        };
     }
+    return {
+        isShowSearchResult: true,
+        searchedFormItems: [...state.formItems.filter(value => value.action.includes(action.keywords))]
+    };
+
 };
+
+const updateAdvSearchResult = (state, action) => {
+        if (action.isClickOkBtn === false) {
+            return {isShowSearchResult: false, searchedFormItems: []};
+        } else {
+            let tagsRes = state.advSearch.tags.length !== 0 ? state.formItems.filter(value => value.tags.filter(tag => state.advSearch.tags.includes(tag)).length > 0) : [];
+            let dateRes = [];
+            if (state.advSearch.startDate && state.advSearch.endDate) {
+                dateRes = state.formItems.filter(item => item.dueDate >= state.advSearch.startDate && item.dueDate <= state.advSearch.endDate);
+            }
+            if (tagsRes.length > 0 && dateRes.length > 0)
+                return {isShowSearchResult: true, searchedFormItems: tagsRes.filter(item => dateRes.includes(item))};
+            return {isShowSearchResult: true, searchedFormItems: tagsRes.length > 0 ? tagsRes : dateRes};
+        }
+    }
+;
 
 const reducer = (state = initState, action) => {
     let formItems = [];
+    let totalStatisticData = {};
+    let outOfDateStatisticData = {};
     switch (action.type) {
         case 'ADD_TODO':
             formItems = addOrUpdateToDoList(state, action);
@@ -77,7 +104,14 @@ const reducer = (state = initState, action) => {
         case 'DELETE_TODO':
             formItems = [...state.formItems];
             formItems.splice(action.id, 1);
-            return {...state, formItems};
+            let state1 = {...state, formItems};
+            totalStatisticData = changeTotalStatisticData(state1, action);
+            outOfDateStatisticData = changeOutDateStatisticData(state1, action);
+            return {
+                ...state,
+                formItems: formItems,
+                statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
+            };
         case 'CHANGE_CURRENT_ID':
             let currentId = action.currentId;
             state.item.action = state.formItems[currentId].action;
@@ -90,16 +124,29 @@ const reducer = (state = initState, action) => {
             state.statisticData.totalStatisticData = changeTotalStatisticData(state, action);
             state.statisticData.outOfDateStatisticData = changeOutDateStatisticData(state, action);
             return state;
-        case 'UPDATE_SEARCHED_FORM_ITEMS':
+        case 'SIMPLE_SEARCH':
             let searchResult = updateSearchedFormItems(state, action);
-            let st = {...state, searchResult: searchResult};
-            let totalStatisticData = changeTotalStatisticData(st, action);
-            let outOfDateStatisticData = changeOutDateStatisticData(st, action);
+            let state2 = {...state, searchResult: searchResult};
+            totalStatisticData = changeTotalStatisticData(state2, action);
+            outOfDateStatisticData = changeOutDateStatisticData(state2, action);
             return {
                 ...state,
                 searchResult: searchResult,
                 statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
             };
+        case 'ADVANCE_SEARCH':
+            debugger
+            let advSearchResult = updateAdvSearchResult(state, action);
+            let state3 = {...state, searchResult: advSearchResult};
+            totalStatisticData = changeTotalStatisticData(state3, action);
+            outOfDateStatisticData = changeOutDateStatisticData(state3, action);
+            return {
+                ...state,
+                searchResult: advSearchResult,
+                statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
+            };
+
+
         default:
             return state;
     }

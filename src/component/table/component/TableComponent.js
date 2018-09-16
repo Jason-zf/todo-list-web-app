@@ -39,7 +39,7 @@ class TableComponent extends React.Component {
                 {this.renderHeader()}
                 <tbody>
                 {
-                    showItems.map((item, index) => (
+                    showItems.length > 0 && showItems.map((item, index) => (
                         <tr>
                             <td>{item.action}</td>
                             <td>{item.tags.join(', ')}</td>

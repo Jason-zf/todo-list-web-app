@@ -1,10 +1,15 @@
 import React from "react";
-import '../css/search.css'
-import DatePickerComponent from '../../datePicker/'
-import SelectorComponent from "../../selector/";
+import '../../css/search.css'
+import DatePickerComponent from '../../../datePicker'
+import SelectorComponent from "../../../selector/";
 import {Button} from "react-bootstrap";
 
 class AdvSearchComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
+
     render() {
         return (
             <div className='advSearchBox'>
@@ -15,18 +20,18 @@ class AdvSearchComponent extends React.Component {
                     <SelectorComponent/>
                 </div>
                 <div className='advSearchBtnBox'>
-                    <Button onClick={this.onClickOk()}>Ok</Button><Button onClick={this.onClickCancel()}>Cancel</Button>
+                    <Button onClick={this.onClickOk.bind(this)}>Ok</Button><Button onClick={this.onClickCancel.bind(this)}>Cancel</Button>
                 </div>
             </div>
         )
     }
 
     onClickOk() {
-        return undefined;
+        this.props.onClickAdvSearchBtn(true);
     }
 
     onClickCancel() {
-        return undefined;
+        this.props.onClickAdvSearchBtn(false);
     }
 }
 

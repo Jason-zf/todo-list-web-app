@@ -8,10 +8,9 @@ class DatePickerComponent extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        debugger
         this.state = {
-            startDate: moment(),
-            endDate: moment().add(1, 'd')
+            startDate: null,
+            endDate: null
         };
         if (this.props.currentId !== -1 && this.props.formItems[this.props.currentId].dueDate !== undefined) {
             this.state.startDate = this.props.formItems[this.props.currentId].dueDate;
@@ -30,12 +29,14 @@ class DatePickerComponent extends React.Component {
         this.setState({
             startDate: date
         });
+        this.props.advSearch.startDate=date;
     }
 
     handleChangeEnd(date) {
         this.setState({
             endDate: date
-        })
+        });
+        this.props.advSearch.endDate=date;
     }
 
     render() {
@@ -50,6 +51,7 @@ class DatePickerComponent extends React.Component {
                             onChange={this.handleChange.bind(this)}
                             isClearable={false}
                             withPortal={false}
+                            placeholderText='Select...'
                         />
                     </div>
                 }
@@ -63,6 +65,7 @@ class DatePickerComponent extends React.Component {
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
                                 onChange={this.handleChangeStart.bind(this)}
+                                placeholderText='Select startDate...'
                             />
 
                         </div>
@@ -73,6 +76,7 @@ class DatePickerComponent extends React.Component {
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
                                 onChange={this.handleChangeEnd.bind(this)}
+                                placeholderText='Select endDate...'
                             />
                         </div>
                     </div>
