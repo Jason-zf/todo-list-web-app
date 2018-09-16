@@ -9,7 +9,7 @@ class DetailComponent extends React.Component {
         super(props);
         this.state = {
             redirect: false,
-            currentId: parseInt(this.props.match.params.id)
+            currentId: parseInt(this.props.match.params.id,10)
         };
         this.props = props;
     }
@@ -39,7 +39,7 @@ class DetailComponent extends React.Component {
             status: ''
         };
         let title = 'Details of Action';
-        let id = parseInt(this.props.match.params.id);
+        let id = parseInt(this.props.match.params.id,10);
         if (id !== -1) {
             item = this.props.formItems[id];
             title += '-' + item.action;

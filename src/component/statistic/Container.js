@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 
 const mapDispatchToProps = (dispatch) => (
     {
-        onChangeStatisticData: () => dispatch({type: 'CHANGE_STATISTIC_DATA'})
+        onChangeStatisticData: (currentDate) => dispatch({type: 'CHANGE_STATISTIC_DATA',currentDate:currentDate})
     }
 );
 
-export default connect(mapDispatchToProps)(StatisticComponent);
+export default connect(null,mapDispatchToProps)(StatisticComponent);

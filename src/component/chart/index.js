@@ -1,3 +1,3 @@
-import PieChartComponent from './component/PieChart';
+import View from './Container';
 
-export default PieChartComponent;
+export default View;

@@ -9,11 +9,4 @@ const mapStateToProps = (state) => (
     }
 );
 
-const mapDispatchToProps = (dispatch) => (
-    {
-        onChangeStatus: (status) => dispatch({type: 'CHANGE_STATUS', status: status})
-    }
-);
-
-
 export default connect(mapStateToProps)(SelectorComponent);
