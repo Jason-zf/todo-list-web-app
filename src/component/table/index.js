@@ -1,3 +1,3 @@
-import TableComponent from './component/TableComponent'
+import View from './Container'
 
-export default TableComponent;
+export default View;

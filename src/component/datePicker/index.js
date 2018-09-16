@@ -1,3 +1,3 @@
-import DatePickerComponent from './component/DatePickerComponent';
+import View from './Container';
 
-export default DatePickerComponent;
+export default View;

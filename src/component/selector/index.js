@@ -1,5 +1,5 @@
-import SelectorComponent from './component/SelectorComponent';
+import View from './Container';
 
-export default SelectorComponent;
+export default View;
 
 

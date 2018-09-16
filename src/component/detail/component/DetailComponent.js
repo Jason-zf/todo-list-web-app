@@ -1,27 +1,36 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
 import {Modal, Button, FormGroup, ControlLabel, FormControl, Form, Col} from "react-bootstrap";
-import DatePickerComponent from "../../datePicker/component/DatePickerComponent";
-import SelectorComponent from "../../selector/component/SelectorComponent";
+import DatePickerComponent from "../../datePicker/";
+import SelectorComponent from "../../selector/";
 
 class DetailComponent extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            redirect: false
-        }
+            redirect: false,
+            currentId: parseInt(this.props.match.params.id)
+        };
+        debugger
+        this.props = props;
+         // this.props.currentId = parseInt(this.props.match.params.id);
     }
 
     onClickCancel() {
         this.setState({
             redirect: true
-        })
+        });
     }
 
     onClickOk() {
+        debugger
         this.setState({
             redirect: true
-        })
+        });
+        if (this.input.value) {
+            this.props.item.action = this.input.value;
+        }
+        this.props.onAddNewFormItem(this.props.item, this.state.currentId);
     }
 
 
@@ -33,9 +42,11 @@ class DetailComponent extends React.Component {
             status: ''
         };
         let title = 'Details of Action';
-        if (this.props.action !== undefined) {
-            item = this.props;
-            title += '-' + this.props.action;
+        debugger
+        let id = parseInt(this.props.match.params.id);
+        if (id !== -1) {
+            item = this.props.formItems[id];
+            title += '-' + item.action;
         }
         return (
             <div className='detailPage'>
@@ -51,7 +62,9 @@ class DetailComponent extends React.Component {
                                     Action:
                                 </Col>
                                 <Col sm={8}>
-                                    <FormControl type="email" placeholder={item.action}/>
+                                    <FormControl type="email" placeholder={item.action} inputRef={ref => {
+                                        this.input = ref;
+                                    }}/>
                                 </Col>
                             </FormGroup>
 
@@ -75,7 +88,7 @@ class DetailComponent extends React.Component {
 
                             <FormGroup controlId="formHorizontalDueDate">
                                 <Col componentClass={ControlLabel} sm={3}>
-                                    Status:
+                                    Tags:
                                 </Col>
                                 <Col sm={8}>
                                     <SelectorComponent/>

@@ -7,7 +7,7 @@ class SelectorComponent extends React.Component {
         this.props = props;
         this.state = {
             selectedOption: null
-        }
+        };
 
         this.tagsOptions = [
             {value: 'c', label: 'C'},
@@ -18,11 +18,21 @@ class SelectorComponent extends React.Component {
             {value: 'ruby', label: 'Ruby'},
             {value: 'python', label: 'Python'}
         ];
-        this.statusOptions = ['To Do', 'Doing', 'Finished', 'Out of Date'];
+        this.statusOptions = [
+            {value: 'todo', label: 'To Do'},
+            {value: 'doing', label: 'Doing'},
+            {value: 'finished', label: 'Finished'},
+            {value: 'out of date', label: 'Out of Date'},
+        ];
     }
 
     handleChange = (selectedOption) => {
         this.setState({selectedOption});
+        if (this.props.isStatus) {
+            this.props.item.status = selectedOption.label;
+        } else {
+            this.props.item.tags = selectedOption.map(value => value.label);
+        }
     };
 
     render() {

@@ -1,4 +1,4 @@
-import DetailComponent from './component/DetailComponent';
+import View from './Container';
 
 
-export default DetailComponent;
+export default View;

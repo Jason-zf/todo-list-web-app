@@ -8,25 +8,25 @@ class DatePickerComponent extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.handleChange = this.handleChange.bind(this);
-        this.handleChangeStart = this.handleChangeStart.bind(this);
-        this.handleChangeEnd = this.handleChangeEnd.bind(this);
         this.state = {
-            startDate: moment(),
+            startDate: this.props.currentId === -1 ? moment() : this.props.formItems[this.props.currentId].dueDate,
             endDate: moment().add(1, 'd')
         };
+        this.props.item.dueDate = this.state.startDate;
     }
 
     handleChange(date) {
+        debugger
         this.setState({
             startDate: date
         });
+        this.props.item.dueDate = date;
     }
 
     handleChangeStart(date) {
         this.setState({
             startDate: date
-        })
+        });
     }
 
     handleChangeEnd(date) {
@@ -44,7 +44,7 @@ class DatePickerComponent extends React.Component {
                         <DatePicker
                             dateFormat='YYYY/MM/DD'
                             selected={this.state.startDate}
-                            onChange={this.handleChange}
+                            onChange={this.handleChange.bind(this)}
                             isClearable={false}
                             withPortal={false}
                         />
@@ -59,7 +59,7 @@ class DatePickerComponent extends React.Component {
                                 selectsStart
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
-                                onChange={this.handleChangeStart}
+                                onChange={this.handleChangeStart.bind(this)}
                             />
 
                         </div>
@@ -69,7 +69,7 @@ class DatePickerComponent extends React.Component {
                                 selectsEnd
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
-                                onChange={this.handleChangeEnd}
+                                onChange={this.handleChangeEnd.bind(this)}
                             />
                         </div>
                     </div>
