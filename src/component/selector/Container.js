@@ -3,7 +3,9 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state) => (
     {
-        item: state.item
+        formItems:state.formItems,
+        item: state.item,
+        currentId:state.currentId
     }
 );
 

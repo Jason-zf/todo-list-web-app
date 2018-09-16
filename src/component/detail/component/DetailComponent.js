@@ -11,9 +11,7 @@ class DetailComponent extends React.Component {
             redirect: false,
             currentId: parseInt(this.props.match.params.id)
         };
-        debugger
         this.props = props;
-         // this.props.currentId = parseInt(this.props.match.params.id);
     }
 
     onClickCancel() {
@@ -23,7 +21,6 @@ class DetailComponent extends React.Component {
     }
 
     onClickOk() {
-        debugger
         this.setState({
             redirect: true
         });
@@ -42,11 +39,11 @@ class DetailComponent extends React.Component {
             status: ''
         };
         let title = 'Details of Action';
-        debugger
         let id = parseInt(this.props.match.params.id);
         if (id !== -1) {
             item = this.props.formItems[id];
             title += '-' + item.action;
+            this.props.onChangeCurrentId(id);
         }
         return (
             <div className='detailPage'>

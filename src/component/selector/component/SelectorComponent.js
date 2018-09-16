@@ -45,6 +45,7 @@ class SelectorComponent extends React.Component {
                         onChange={this.handleChange}
                         options={this.tagsOptions}
                         isMulti={true}
+                        placeholder={this.props.currentId !== -1 ? this.props.formItems[this.props.currentId].tags.join(', ') : 'Select...'}
                     />
                 }
                 {
@@ -52,6 +53,7 @@ class SelectorComponent extends React.Component {
                         value={selectedOption}
                         onChange={this.handleChange}
                         options={this.statusOptions}
+                        placeholder={this.props.currentId !== -1 ? this.props.formItems[this.props.currentId].status : 'Select...'}
                     />
                 }
             </div>

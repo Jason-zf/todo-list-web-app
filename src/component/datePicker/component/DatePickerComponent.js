@@ -16,7 +16,6 @@ class DatePickerComponent extends React.Component {
     }
 
     handleChange(date) {
-        debugger
         this.setState({
             startDate: date
         });
