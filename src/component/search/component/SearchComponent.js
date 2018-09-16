@@ -11,6 +11,13 @@ class SearchComponent extends React.Component {
         }
     }
 
+    onKeyPress(e) {
+        if (e.keyCode === 13) {
+            console.log(this.input.value);
+            this.props.updateSearchedFormItems(this.input.value);
+        }
+    }
+
     render() {
         return (
             <div className='searchContainer'>
@@ -18,15 +25,20 @@ class SearchComponent extends React.Component {
                     <FormGroup>
                         <InputGroup>
                             <InputGroup.Addon><span className='glyphicon glyphicon-search'/></InputGroup.Addon>
-                            <FormControl type="text" placeholder='Search...'/>
+                            <FormControl type="text" placeholder='Search...' onKeyDown={this.onKeyPress.bind(this)}
+                                         inputRef={ref => {
+                                             this.input = ref;
+                                         }}/>
                         </InputGroup>
                     </FormGroup>
                 </div>
                 <div className='advSearchLink'>
-                    <a onClick={()=>{this.onClickAdvSearchLink()}}>advance</a>
+                    <a onClick={() => {
+                        this.onClickAdvSearchLink()
+                    }}>advance</a>
                 </div>
                 <div>
-                    {this.state.advSearch===true && <AdvSearchComponent/>}
+                    {this.state.advSearch === true && <AdvSearchComponent/>}
                 </div>
             </div>
         )

@@ -1,3 +1,3 @@
-import SearchComponent from './component/SearchComponent';
+import View from './Container';
 
-export default SearchComponent;
+export default View;

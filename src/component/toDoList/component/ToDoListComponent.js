@@ -1,6 +1,6 @@
 import React from "react";
 import SearchComponent from "../../search";
-import View from "../../table";
+import TableComponent from "../../table";
 
 class ToDoListComponent extends React.Component {
     render() {
@@ -10,7 +10,7 @@ class ToDoListComponent extends React.Component {
                     <SearchComponent/>
                 </div>
                 <div className='tableContainer'>
-                    <View/>
+                    <TableComponent/>
                 </div>
             </div>
         )

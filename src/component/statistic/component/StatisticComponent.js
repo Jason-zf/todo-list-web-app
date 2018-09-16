@@ -1,5 +1,5 @@
 import React from "react";
-import SearchComponent from "../../search";
+import View from "../../search";
 import PieChart from "../../chart";
 import moment from "moment";
 
@@ -15,7 +15,7 @@ class StatisticComponent extends React.Component {
         return (
             <div>
                 <div className='searchContainer'>
-                    <SearchComponent/>
+                    <View/>
                 </div>
                 <div className='pieChartContainer'>
                     <div className='pieChart'>
