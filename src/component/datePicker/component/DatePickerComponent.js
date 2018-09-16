@@ -8,10 +8,14 @@ class DatePickerComponent extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
+        debugger
         this.state = {
-            startDate: this.props.currentId === -1 ? moment() : this.props.formItems[this.props.currentId].dueDate,
+            startDate: moment(),
             endDate: moment().add(1, 'd')
         };
+        if (this.props.currentId !== -1 && this.props.formItems[this.props.currentId].dueDate !== undefined) {
+            this.state.startDate = this.props.formItems[this.props.currentId].dueDate;
+        }
         this.props.item.dueDate = this.state.startDate;
     }
 

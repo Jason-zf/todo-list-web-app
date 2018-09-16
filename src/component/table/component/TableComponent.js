@@ -28,7 +28,6 @@ class TableComponent extends React.Component {
     }
 
     onClickBtn(id) {
-        debugger
         this.props.onDeleteFormItem(id);
         console.log("fun");
     }
