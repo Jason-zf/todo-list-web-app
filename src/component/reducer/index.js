@@ -1,9 +1,11 @@
 const initState = {
     formItems: [],
-    searchItems: [],
-    isShowSearchItems: false,
     item: {id: 0, action: '', tags: [], dueDate: '', status: ''},
-    currentId: -1
+    currentId: -1,
+    statisticData: {
+        totalStatisticData: {},
+        outOfDateStatisticData: {}
+    }
 };
 
 function addOrUpdateToDoList(state, action) {
@@ -17,12 +19,17 @@ function addOrUpdateToDoList(state, action) {
 }
 
 const reducer = (state = initState, action) => {
+    let formItems = [];
     switch (action.type) {
         case 'ADD_TODO':
-            let formItems = addOrUpdateToDoList(state, action);
+            debugger
+            formItems = addOrUpdateToDoList(state, action);
             return {...state, formItems};
         case 'DELETE_TODO':
-            return state;
+            debugger
+            formItems = [...state.formItems];
+            formItems.splice(action.id, 1);
+            return {...state, formItems};
         case 'CHANGE_CURRENT_ID':
             debugger
             let currentId = action.currentId;

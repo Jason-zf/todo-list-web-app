@@ -19,10 +19,9 @@ class SelectorComponent extends React.Component {
             {value: 'python', label: 'Python'}
         ];
         this.statusOptions = [
-            {value: 'todo', label: 'To Do'},
-            {value: 'doing', label: 'Doing'},
-            {value: 'finished', label: 'Finished'},
-            {value: 'out of date', label: 'Out of Date'},
+            {value: 'todo', label: 'To do'},
+            {value: 'in progress', label: 'In progress'},
+            {value: 'blocked', label: 'Blocked'},
         ];
     }
 

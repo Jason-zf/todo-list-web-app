@@ -1,3 +1,3 @@
-import StatisticComponent from './component/StatisticComponent';
+import View from './Container';
 
-export default StatisticComponent;
+export default View;

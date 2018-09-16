@@ -1,7 +1,7 @@
 import React from "react";
 import TabController from "./TabControl";
 import ToDoListComponent from "../../toDoList/";
-import StatisticComponent from '../../statistic'
+import View from '../../statistic'
 
 class TabComponent extends React.Component {
     render() {
@@ -11,7 +11,7 @@ class TabComponent extends React.Component {
                     <ToDoListComponent/>
                 </div>
                 <div name="Statistic">
-                    <StatisticComponent/>
+                    <View/>
                 </div>
             </TabController>
         )
