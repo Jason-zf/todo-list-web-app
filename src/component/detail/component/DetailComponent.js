@@ -27,6 +27,7 @@ class DetailComponent extends React.Component {
         if (this.input.value) {
             this.props.item.action = this.input.value;
         }
+        debugger
         this.props.onAddNewFormItem(this.props.item, this.state.currentId);
     }
 

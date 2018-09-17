@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Table} from "react-bootstrap";
 import '../css/table.css'
-import SortBtn from "./SortBtn";
+import SortBtn from "./Container";
 import {Link, Redirect} from "react-router-dom";
 
 class TableComponent extends React.Component {
@@ -17,11 +17,11 @@ class TableComponent extends React.Component {
         return (
             <thead>
             <tr>
-                <th><SortBtn>Action</SortBtn></th>
-                <th><SortBtn>Tags</SortBtn></th>
-                <th><SortBtn>Due Date</SortBtn></th>
-                <th><SortBtn>Status</SortBtn></th>
-                <th><SortBtn>Actions</SortBtn></th>
+                <th><SortBtn title='action'>Action</SortBtn></th>
+                <th><SortBtn title='tags'>Tags</SortBtn></th>
+                <th><SortBtn title='dueDate'>Due Date</SortBtn></th>
+                <th><SortBtn title='status'>Status</SortBtn></th>
+                <th><SortBtn title='actions'>Actions</SortBtn></th>
             </tr>
             </thead>
         )

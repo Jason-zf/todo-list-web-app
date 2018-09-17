@@ -12,7 +12,7 @@ class DatePickerComponent extends React.Component {
             startDate: null,
             endDate: null
         };
-        if (this.props.currentId !== -1 && this.props.formItems[this.props.currentId].dueDate !== undefined) {
+        if (this.props.formItems[this.props.currentId] !== undefined && this.props.formItems[this.props.currentId].dueDate !== undefined) {
             this.state.startDate = this.props.formItems[this.props.currentId].dueDate;
         }
         this.props.item.dueDate = this.state.startDate;
@@ -29,14 +29,14 @@ class DatePickerComponent extends React.Component {
         this.setState({
             startDate: date
         });
-        this.props.advSearch.startDate=date;
+        this.props.advSearch.startDate = date;
     }
 
     handleChangeEnd(date) {
         this.setState({
             endDate: date
         });
-        this.props.advSearch.endDate=date;
+        this.props.advSearch.endDate = date;
     }
 
     render() {

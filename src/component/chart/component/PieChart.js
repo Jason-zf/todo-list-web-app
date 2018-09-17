@@ -6,7 +6,9 @@ class PieChartComponent extends React.Component {
     render() {
         return (
             <div>
-                <ReactSvgPieChart data={this.props.statisticData.totalStatisticData} viewBoxSize={0.05} expandOnHover expandSize={0.005} strokeWidth={0}
+                <div><h1>Statistic</h1></div>
+                <ReactSvgPieChart data={this.props.statisticData.totalStatisticData} viewBoxSize={0.05} expandOnHover
+                                  expandSize={0.005} strokeWidth={0}
                                   onSectorHover={(d, i, e) => {
                                       if (d) {
                                           console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
@@ -14,7 +16,9 @@ class PieChartComponent extends React.Component {
                                           console.log("Mouse leave - Index:", i, "Event:", e)
                                       }
                                   }}/>
-                <ReactSvgPieChart data={this.props.statisticData.outOfDateStatisticData} viewBoxSize={0.05} expandOnHover expandSize={0.005} strokeWidth={0}
+                <div><h1>Date</h1></div>
+                <ReactSvgPieChart data={this.props.statisticData.outOfDateStatisticData} viewBoxSize={0.05}
+                                  expandOnHover expandSize={0.005} strokeWidth={0}
                                   onSectorHover={(d, i, e) => {
                                       if (d) {
                                           console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)

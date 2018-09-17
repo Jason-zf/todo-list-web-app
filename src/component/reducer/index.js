@@ -1,5 +1,3 @@
-import moment from "moment";
-
 const initState = {
     formItems: [],
     item: {id: 0, action: '', tags: [], dueDate: '', status: ''},
@@ -26,8 +24,6 @@ function addOrUpdateToDoList(state, action) {
     } else {
         formItems[action.currentId] = action.item;
     }
-    state.item = {};
-    state.advSearch.tags = [];
     return formItems;
 }
 
@@ -78,20 +74,19 @@ const updateSearchedFormItems = (state, action) => {
 };
 
 const updateAdvSearchResult = (state, action) => {
-        if (action.isClickOkBtn === false) {
-            return {isShowSearchResult: false, searchedFormItems: []};
-        } else {
-            let tagsRes = state.advSearch.tags.length !== 0 ? state.formItems.filter(value => value.tags.filter(tag => state.advSearch.tags.includes(tag)).length > 0) : [];
-            let dateRes = [];
-            if (state.advSearch.startDate && state.advSearch.endDate) {
-                dateRes = state.formItems.filter(item => item.dueDate >= state.advSearch.startDate && item.dueDate <= state.advSearch.endDate);
-            }
-            if (tagsRes.length > 0 && dateRes.length > 0)
-                return {isShowSearchResult: true, searchedFormItems: tagsRes.filter(item => dateRes.includes(item))};
-            return {isShowSearchResult: true, searchedFormItems: tagsRes.length > 0 ? tagsRes : dateRes};
+    if (action.isClickOkBtn === false) {
+        return {isShowSearchResult: false, searchedFormItems: []};
+    } else {
+        let tagsRes = state.advSearch.tags.length !== 0 ? state.formItems.filter(value => value.tags.filter(tag => state.advSearch.tags.includes(tag)).length > 0) : [];
+        let dateRes = [];
+        if (state.advSearch.startDate && state.advSearch.endDate) {
+            dateRes = state.formItems.filter(item => item.dueDate >= state.advSearch.startDate && item.dueDate <= state.advSearch.endDate);
         }
+        if (tagsRes.length > 0 && dateRes.length > 0)
+            return {isShowSearchResult: true, searchedFormItems: tagsRes.filter(item => dateRes.includes(item))};
+        return {isShowSearchResult: true, searchedFormItems: tagsRes.length > 0 ? tagsRes : dateRes};
     }
-;
+};
 
 const reducer = (state = initState, action) => {
     let formItems = [];
@@ -99,8 +94,9 @@ const reducer = (state = initState, action) => {
     let outOfDateStatisticData = {};
     switch (action.type) {
         case 'ADD_TODO':
+            debugger
             formItems = addOrUpdateToDoList(state, action);
-            return {...state, formItems};
+            return {...state, formItems: formItems, item: {}, advSearch: {tags: [], startDate: null, endDate: null}};
         case 'DELETE_TODO':
             formItems = [...state.formItems];
             formItems.splice(action.id, 1);
@@ -135,7 +131,6 @@ const reducer = (state = initState, action) => {
                 statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
             };
         case 'ADVANCE_SEARCH':
-            debugger
             let advSearchResult = updateAdvSearchResult(state, action);
             let state3 = {...state, searchResult: advSearchResult};
             totalStatisticData = changeTotalStatisticData(state3, action);
@@ -146,6 +141,13 @@ const reducer = (state = initState, action) => {
                 statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
             };
 
+        case 'SORT_FORM_ITEMS':
+            debugger
+            // if (action.column === 'dueDate') {
+            formItems = [].concat(state.formItems).sort((a, b) => (a.dueDate < b.dueDate) === action.up);
+            return {...state, formItems};
+        // }
+        // return state;
 
         default:
             return state;

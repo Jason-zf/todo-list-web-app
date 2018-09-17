@@ -5,6 +5,7 @@ import '../css/table.css'
 class SortBtn extends React.Component {
     constructor(props) {
         super(props);
+        this.props = props;
         this.state = {
             up: true
         }
@@ -12,6 +13,7 @@ class SortBtn extends React.Component {
 
     onClickBtn() {
         this.setState({up: !this.state.up});
+        this.props.onClickSortBtn(this.props.title, this.state.up);
     }
 
     render() {
