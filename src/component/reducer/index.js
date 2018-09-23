@@ -88,6 +88,21 @@ const updateAdvSearchResult = (state, action) => {
     }
 };
 
+const sortFormItems = (state, action) => {
+    switch (action.column) {
+        case 'action':
+            return [].concat(state.formItems).sort((a, b) => (a.action < b.action) === action.up);
+        case 'tags':
+            return [].concat(state.formItems).sort((a, b) => (a.tags < b.tags) === action.up);
+        case 'status':
+            return [].concat(state.formItems).sort((a, b) => (a.status < b.status) === action.up);
+        case 'dueDate':
+            return [].concat(state.formItems).sort((a, b) => (a.dueDate < b.dueDate) === action.up);
+        default:
+            return state.formItems;
+    }
+};
+
 const reducer = (state = initState, action) => {
     let formItems = [];
     let totalStatisticData = {};
@@ -140,15 +155,10 @@ const reducer = (state = initState, action) => {
                 searchResult: advSearchResult,
                 statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
             };
-
         case 'SORT_FORM_ITEMS':
             debugger
-            // if (action.column === 'dueDate') {
-            formItems = [].concat(state.formItems).sort((a, b) => (a.dueDate < b.dueDate) === action.up);
+            formItems = sortFormItems(state, action);
             return {...state, formItems};
-        // }
-        // return state;
-
         default:
             return state;
     }
