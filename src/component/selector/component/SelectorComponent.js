@@ -1,5 +1,5 @@
 import React from "react";
-import Select from 'react-select'
+import CreatableSelect from 'react-select/lib/Creatable'
 
 class SelectorComponent extends React.Component {
     constructor(props) {
@@ -32,6 +32,7 @@ class SelectorComponent extends React.Component {
         } else {
             this.props.item.tags = selectedOption.map(value => value.label);
             this.props.advSearch.tags = selectedOption.map(value => value.label);
+            console.log(this.props.item.tags);
         }
     };
 
@@ -45,7 +46,7 @@ class SelectorComponent extends React.Component {
         return (
             <div>
                 {
-                    !this.props.isStatus && <Select
+                    !this.props.isStatus && <CreatableSelect
                         value={selectedOption}
                         onChange={this.handleChange}
                         options={this.tagsOptions}
@@ -54,7 +55,7 @@ class SelectorComponent extends React.Component {
                     />
                 }
                 {
-                    this.props.isStatus === true && <Select
+                    this.props.isStatus === true && <CreatableSelect
                         value={selectedOption}
                         onChange={this.handleChange}
                         options={this.statusOptions}
