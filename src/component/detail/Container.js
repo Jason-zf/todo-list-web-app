@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
 import DetailComponent from "./component/DetailComponent";
 
-const mapStateToProps = (state) => ({
-    formItems: state.formItems,
-    item: state.item,
+const mapStateToProps = ({data}) => ({
+    formItems: data.formItems,
+    item: data.item,
 });
 
 const mapDispatchToProps = (dispatch) => ({

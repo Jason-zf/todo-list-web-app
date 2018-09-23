@@ -9,7 +9,7 @@ class DetailComponent extends React.Component {
         super(props);
         this.state = {
             redirect: false,
-            currentId: parseInt(this.props.match.params.id,10)
+            currentId: parseInt(this.props.match.params.id, 10)
         };
         this.props = props;
     }
@@ -27,7 +27,6 @@ class DetailComponent extends React.Component {
         if (this.input.value) {
             this.props.item.action = this.input.value;
         }
-        debugger
         this.props.onAddNewFormItem(this.props.item, this.state.currentId);
     }
 
@@ -40,7 +39,7 @@ class DetailComponent extends React.Component {
             status: ''
         };
         let title = 'Details of Action';
-        let id = parseInt(this.props.match.params.id,10);
+        let id = parseInt(this.props.match.params.id, 10);
         if (id !== -1) {
             item = this.props.formItems[id];
             title += '-' + item.action;
@@ -106,7 +105,7 @@ class DetailComponent extends React.Component {
                     </Modal.Footer>
                 </Modal.Dialog>
                 {
-                    this.state.redirect && <Redirect to='/'/>
+                    this.state.redirect && <Redirect to='/home'/>
                 }
             </div>
         )

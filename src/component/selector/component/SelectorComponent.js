@@ -37,6 +37,11 @@ class SelectorComponent extends React.Component {
 
     render() {
         const {selectedOption} = this.state;
+        let statusPlaceholder = 'Select...', tagPlaceholder = 'Select...';
+        if (this.props.currentId !== undefined && this.props.formItems[this.props.currentId] !== undefined) {
+            tagPlaceholder = this.props.formItems[this.props.currentId].tags.join(", ");
+            statusPlaceholder = this.props.formItems[this.props.currentId].status;
+        }
         return (
             <div>
                 {
@@ -45,7 +50,7 @@ class SelectorComponent extends React.Component {
                         onChange={this.handleChange}
                         options={this.tagsOptions}
                         isMulti={true}
-                        placeholder={this.props.formItems[this.props.currentId] !== undefined ? this.props.formItems[this.props.currentId].tags.join(', ') : 'Select...'}
+                        placeholder={tagPlaceholder}
                     />
                 }
                 {
@@ -53,7 +58,7 @@ class SelectorComponent extends React.Component {
                         value={selectedOption}
                         onChange={this.handleChange}
                         options={this.statusOptions}
-                        placeholder={this.props.formItems[this.props.currentId] !== undefined ? this.props.formItems[this.props.currentId].status : 'Select...'}
+                        placeholder={statusPlaceholder}
                     />
                 }
             </div>

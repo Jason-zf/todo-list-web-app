@@ -1,9 +1,9 @@
 import PieChart from './component/PieChart';
 import {connect} from "react-redux";
 
-const mapStateToProps = (state) => (
+const mapStateToProps = ({data}) => (
     {
-        statisticData: state.statisticData
+        statisticData: data.statisticData
     }
 );
 

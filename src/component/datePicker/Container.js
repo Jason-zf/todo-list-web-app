@@ -1,12 +1,12 @@
 import {connect} from "react-redux";
 import DatePickerComponent from "./component/DatePickerComponent";
 
-const mapStateToProps = (state) => (
+const mapStateToProps = ({data}) => (
     {
-        formItems:state.formItems,
-        item: state.item,
-        currentId:state.currentId,
-        advSearch:state.advSearch
+        formItems: data.formItems,
+        item: data.item,
+        currentId: data.currentId,
+        advSearch: data.advSearch
     }
 );
 

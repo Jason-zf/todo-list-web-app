@@ -109,7 +109,6 @@ const reducer = (state = initState, action) => {
     let outOfDateStatisticData = {};
     switch (action.type) {
         case 'ADD_TODO':
-            debugger
             formItems = addOrUpdateToDoList(state, action);
             return {...state, formItems: formItems, item: {}, advSearch: {tags: [], startDate: null, endDate: null}};
         case 'DELETE_TODO':
@@ -156,7 +155,6 @@ const reducer = (state = initState, action) => {
                 statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
             };
         case 'SORT_FORM_ITEMS':
-            debugger
             formItems = sortFormItems(state, action);
             return {...state, formItems};
         default:

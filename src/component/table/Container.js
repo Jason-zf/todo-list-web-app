@@ -1,11 +1,11 @@
 import TableComponent from './component/TableComponent';
 import {connect} from "react-redux";
 
-const mapStateToProps = (state) => (
+const mapStateToProps = ({data}) => (
     {
-        formItems: state.formItems,
-        item: state.item,
-        searchResult:state.searchResult
+        formItems: data.formItems,
+        item: data.item,
+        searchResult: data.searchResult
     }
 );
 

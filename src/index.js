@@ -6,10 +6,15 @@ import registerServiceWorker from './registerServiceWorker';
 import TabComponent from "./component/tab";
 import DetailComponent from "./component/detail";
 import reducer from "./component/reducer";
-import {createStore} from 'redux'
+import {combineReducers, createStore} from 'redux'
 import {Provider} from "react-redux";
+import {authenticationReducer} from "./component/reducer/authenticationReducer";
+import LoginComponent from "./component/login"
 
-const store = createStore(reducer);
+const store = createStore(combineReducers({login: authenticationReducer, data: reducer}));
+
+console.log(store);
+console.log(store.getState());
 
 // fetch("/todos", {
 //     method: 'PUT',
@@ -31,14 +36,13 @@ const store = createStore(reducer);
 //     console.log(myJson);
 // });
 
-
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <div>
                 <Switch>
-                    <Route exact path='/' component={TabComponent}/>
-                    {/*<Route path='/detail/' component={DetailComponent}/>*/}
+                    <Route exact path='/login' component={LoginComponent}/>
+                    <Route path='/home' component={TabComponent}/>
                     <Route path='/detail/:id' component={DetailComponent}/>
                 </Switch>
             </div>
