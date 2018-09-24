@@ -1,14 +1,12 @@
 const initState = {
-    isAuthenticated: false
+    isAuthenticated: false,
+    authorization: ''
 };
 
 export const authenticationReducer = (state = initState, action) => {
     switch (action.type) {
         case 'LOGIN':
-            if (action.username === 'tw' && action.password === 'tw')
-                return {...state, isAuthenticated: action.isSucceed};
-            else
-                return {...state, isAuthenticated: false};
+            return {...state, isAuthenticated: action.isAuthenticated, authorization: action.authorization};
         case 'REGISTER':
             return state;
         default:

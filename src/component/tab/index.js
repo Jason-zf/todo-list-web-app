@@ -1,3 +1,3 @@
-import TabComponent from './component/TabComponent';
+import View from './Container';
 
-export default TabComponent;
+export default View;
