@@ -20,18 +20,20 @@ class AdvSearchComponent extends React.Component {
                     <SelectorComponent/>
                 </div>
                 <div className='advSearchBtnBox'>
-                    <Button onClick={this.onClickOk.bind(this)}>Ok</Button><Button onClick={this.onClickCancel.bind(this)}>Cancel</Button>
+                    <Button onClick={this.onClickOk.bind(this)}>Ok</Button><Button
+                    onClick={this.onClickCancel.bind(this)}>Cancel</Button>
                 </div>
             </div>
         )
     }
 
     onClickOk() {
-        this.props.onClickAdvSearchBtn(true);
+        debugger
+        this.props.onClickAdvSearchBtn(true, this.props.authorization, this.props.advSearch);
     }
 
     onClickCancel() {
-        this.props.onClickAdvSearchBtn(false);
+        this.props.onClickAdvSearchBtn(false, this.props.authorization, this.props.advSearch);
     }
 }
 
