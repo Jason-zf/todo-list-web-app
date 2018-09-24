@@ -1,6 +1,6 @@
 const initState = {
     formItems: [],
-    item: {id: 0, action: '', tags: [], dueDate: '', status: ''},
+    item: {id: 0, name: '', tags: [], dueDate: '', status: ''},
     currentId: -1,
     statisticData: {
         totalStatisticData: [],
@@ -38,6 +38,7 @@ const changeTotalStatisticData = (state, action) => {
 };
 
 const changeOutDateStatisticData = (state, action) => {
+    debugger
     let type = ['Out of Date', 'In 1 days', 'In 3 day'];
     let items = state.searchResult.isShowSearchResult === true ? state.searchResult.searchedFormItems : state.formItems;
     let value1 = items.filter(item => item.dueDate.diff(action.currentDate, 'days') < 0).length;
@@ -68,7 +69,7 @@ const updateSearchedFormItems = (state, action) => {
     }
     return {
         isShowSearchResult: true,
-        searchedFormItems: [...state.formItems.filter(value => value.action.includes(action.keywords))]
+        searchedFormItems: [...state.formItems.filter(value => value.name.includes(action.keywords))]
     };
 
 };
@@ -91,7 +92,7 @@ const updateAdvSearchResult = (state, action) => {
 const sortFormItems = (state, action) => {
     switch (action.column) {
         case 'action':
-            return [].concat(state.formItems).sort((a, b) => (a.action < b.action) === action.up);
+            return [].concat(state.formItems).sort((a, b) => (a.name < b.name) === action.up);
         case 'tags':
             return [].concat(state.formItems).sort((a, b) => (a.tags < b.tags) === action.up);
         case 'status':
@@ -124,16 +125,16 @@ const reducer = (state = initState, action) => {
             };
         case 'CHANGE_CURRENT_ID':
             let currentId = action.currentId;
-            state.item.action = state.formItems[currentId].action;
+            state.item.name = state.formItems[currentId].name;
             state.item.status = state.formItems[currentId].status;
             state.item.dueDate = state.formItems[currentId].dueDate;
             state.item.tags = state.formItems[currentId].tags;
             state.item.id = currentId;
             return {...state, currentId};
         case 'CHANGE_STATISTIC_DATA':
-            state.statisticData.totalStatisticData = changeTotalStatisticData(state, action);
-            state.statisticData.outOfDateStatisticData = changeOutDateStatisticData(state, action);
-            return state;
+            let totalData = changeTotalStatisticData(state, action);
+            let outOfDateData = changeOutDateStatisticData(state, action);
+            return {...state, statisticData: {totalStatisticData: totalData, outOfDateStatisticData: outOfDateData}};
         case 'SIMPLE_SEARCH':
             let searchResult = updateSearchedFormItems(state, action);
             let state2 = {...state, searchResult: searchResult};
@@ -157,6 +158,10 @@ const reducer = (state = initState, action) => {
         case 'SORT_FORM_ITEMS':
             formItems = sortFormItems(state, action);
             return {...state, formItems};
+
+        case 'INIT':
+            debugger
+            return {...state, formItems: action.items};
         default:
             return state;
     }

@@ -25,15 +25,15 @@ class DetailComponent extends React.Component {
             redirect: true
         });
         if (this.input.value) {
-            this.props.item.action = this.input.value;
+            this.props.item.name = this.input.value;
         }
-        this.props.onAddNewFormItem(this.props.item, this.state.currentId);
+        this.props.onAddNewFormItem(this.props.item, this.state.currentId, this.props.authorization);
     }
 
 
     render() {
         let item = {
-            action: 'action...',
+            name: 'action...',
             tags: [],
             dueDate: '',
             status: ''
@@ -42,7 +42,7 @@ class DetailComponent extends React.Component {
         let id = parseInt(this.props.match.params.id, 10);
         if (id !== -1) {
             item = this.props.formItems[id];
-            title += '-' + item.action;
+            title += '-' + item.name;
             this.props.onChangeCurrentId(id);
 
         }
@@ -60,7 +60,7 @@ class DetailComponent extends React.Component {
                                     Action:
                                 </Col>
                                 <Col sm={8}>
-                                    <FormControl type="email" placeholder={item.action} inputRef={ref => {
+                                    <FormControl type="email" placeholder={item.name} inputRef={ref => {
                                         this.input = ref;
                                     }}/>
                                 </Col>

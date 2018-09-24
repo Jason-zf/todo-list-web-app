@@ -3,6 +3,7 @@ import {Button, Table} from "react-bootstrap";
 import '../css/table.css'
 import SortBtn from "./Container";
 import {Link, Redirect} from "react-router-dom";
+import moment from "moment";
 
 class TableComponent extends React.Component {
     constructor(props) {
@@ -41,9 +42,9 @@ class TableComponent extends React.Component {
                 {
                     showItems.length > 0 && showItems.map((item, index) => (
                         <tr>
-                            <td>{item.action}</td>
+                            <td>{item.name}</td>
                             <td>{item.tags.join(', ')}</td>
-                            <td>{item.dueDate.format('YYYY/MM/DD')}</td>
+                            <td>{moment(item.dueDate).format('YYYY/MM/DD')}</td>
                             <td>{item.status}</td>
                             <td>
                                 <div className='detailContainer'>

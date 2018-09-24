@@ -10,6 +10,11 @@ class TabComponent extends React.Component {
         this.props = props;
     }
 
+    componentWillMount() {
+        debugger
+        this.props.initState(this.props.authorization);
+    }
+
     render() {
         return (
             <div>

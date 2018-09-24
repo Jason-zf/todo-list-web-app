@@ -7,11 +7,11 @@ class StatisticComponent extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.props.onChangeStatisticData(moment());
     }
 
-
     render() {
+        debugger
+        this.props.onChangeStatisticData(moment());
         return (
             <div>
                 <div className='searchContainer'>
@@ -22,7 +22,7 @@ class StatisticComponent extends React.Component {
                         <PieChart/>
                     </div>
                     {/*<div className='pieChart'>*/}
-                        {/*<View/>*/}
+                    {/*<View/>*/}
                     {/*</div>*/}
                 </div>
             </div>

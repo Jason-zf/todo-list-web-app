@@ -14,18 +14,18 @@ import LoginComponent from "./component/login"
 const store = createStore(combineReducers({login: authenticationReducer, data: reducer}));
 
 fetch("/todos", {
-    method: 'POST',
+    method: 'GET',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'AUTHORIZATION': 'eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxfQ.TWmWp1hv1L0TIzeIFweGUW-VAbd3DeuhKn8ApN-JjS2KS2LBb7K3eQ5zLVhgkI0zh-p49f2QSnZbNaTaskW-eg'
     },
-    body: JSON.stringify({
-        "name": "test2",
-        "status": "blocked",
-        "dueDate": 1537200000000,
-        "tags": [{"name": "javascript"}, {"name": "c#"}]
-    })
+    // body: JSON.stringify({
+    //     "name": "test2",
+    //     "status": "blocked",
+    //     "dueDate": 1537200000000,
+    //     "tags": [{"name": "javascript"}, {"name": "c#"}]
+    // })
 }).then(function (response) {
     return response.json();
 }).then(function (myJson) {
