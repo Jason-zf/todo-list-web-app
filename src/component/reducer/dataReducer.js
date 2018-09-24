@@ -109,9 +109,6 @@ const reducer = (state = initState, action) => {
     let totalStatisticData = {};
     let outOfDateStatisticData = {};
     switch (action.type) {
-        case 'ADD_TODO':
-            formItems = addOrUpdateToDoList(state, action);
-            return {...state, formItems: formItems, item: {}, advSearch: {tags: [], startDate: null, endDate: null}};
         case 'DELETE_TODO':
             formItems = [...state.formItems];
             formItems.splice(action.id, 1);
