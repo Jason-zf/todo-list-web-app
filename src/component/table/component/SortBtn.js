@@ -13,7 +13,7 @@ class SortBtn extends React.Component {
 
     onClickBtn() {
         this.setState({up: !this.state.up});
-        this.props.onClickSortBtn(this.props.title, this.state.up);
+        this.props.onClickSortBtn(this.props.title, this.state.up, this.props.authorization);
     }
 
     render() {

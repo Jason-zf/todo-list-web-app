@@ -1,7 +1,7 @@
 import moment from "moment";
 
-const initFormItems = (dispatch, authorization) => {
-    fetch("/todos", {
+const initFormItems = (server, dispatch, authorization) => {
+    fetch(server, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',

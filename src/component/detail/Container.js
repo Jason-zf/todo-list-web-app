@@ -9,7 +9,6 @@ const mapStateToProps = ({login, data}) => ({
 });
 
 
-
 const mapDispatchToProps = (dispatch) => ({
     onAddNewFormItem: (item, currentId, authorization) => {
         if (currentId === -1) {
@@ -28,7 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
                 })
             }).then(function (response) {
                 // debugger
-                initFormItems(dispatch, authorization);
+                initFormItems("/todos", dispatch, authorization);
             });
         } else {
             fetch("/todos", {
@@ -47,7 +46,7 @@ const mapDispatchToProps = (dispatch) => ({
                 })
             }).then(function (response) {
                 // debugger
-                initFormItems(dispatch, authorization);
+                initFormItems("/todos", dispatch, authorization);
             });
         }
     },
@@ -55,5 +54,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const app = connect(mapStateToProps, mapDispatchToProps)(DetailComponent);
-export default app;
+export default connect(mapStateToProps, mapDispatchToProps)(DetailComponent);

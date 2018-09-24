@@ -12,6 +12,8 @@ class DetailComponent extends React.Component {
             currentId: parseInt(this.props.match.params.id, 10)
         };
         this.props = props;
+        this.name = 'action...';
+        this.title = 'Details of Action';
     }
 
     onClickCancel() {
@@ -33,21 +35,20 @@ class DetailComponent extends React.Component {
 
     componentWillMount() {
         this.props.onChangeItem(this.state.currentId);
+
+        if (this.state.currentId !== -1) {
+            this.name = this.props.formItems.filter(item => item.id === this.state.currentId)[0].name;
+            this.title += '-' + this.name;
+        }
     }
 
     render() {
-        debugger
-        let name = 'action...';
-        let title = 'Details of Action';
-        if (this.state.currentId !== -1) {
-            title += '-' + this.props.item.name;
-            name = this.props.item.name;
-        }
+
         return (
             <div className='detailPage'>
                 <Modal.Dialog>
                     <Modal.Header>
-                        <Modal.Title>{title}</Modal.Title>
+                        <Modal.Title>{this.title}</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -57,7 +58,7 @@ class DetailComponent extends React.Component {
                                     Action:
                                 </Col>
                                 <Col sm={8}>
-                                    <FormControl type="email" placeholder={name} inputRef={ref => {
+                                    <FormControl type="email" placeholder={this.name} inputRef={ref => {
                                         this.input = ref;
                                     }}/>
                                 </Col>

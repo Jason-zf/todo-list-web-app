@@ -18,7 +18,7 @@ class TableComponent extends React.Component {
         return (
             <thead>
             <tr>
-                <th><SortBtn title='action'>Action</SortBtn></th>
+                <th><SortBtn title='name'>Action</SortBtn></th>
                 <th><SortBtn title='tags'>Tags</SortBtn></th>
                 <th><SortBtn title='dueDate'>Due Date</SortBtn></th>
                 <th><SortBtn title='status'>Status</SortBtn></th>
@@ -74,7 +74,7 @@ class TableComponent extends React.Component {
     }
 
     onClickAddBtn() {
-        this.props.onChangeItem(-1);
+        this.props.onChangeTableItem(-1);
         this.setState({
             redirect: true
         })

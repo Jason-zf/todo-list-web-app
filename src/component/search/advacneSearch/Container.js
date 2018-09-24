@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch) => ({
                 }
             });
         } else {
-            initFormItems(dispatch, authorization);
+            initFormItems("/todos",dispatch, authorization);
         }
     }
 });

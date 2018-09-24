@@ -14,7 +14,6 @@ class SearchComponent extends React.Component {
     onKeyPress(e) {
         if (e.keyCode === 13) {
             console.log(this.input.value);
-            debugger
             this.props.updateSearchedFormItems(this.input.value, this.props.authorization);
         }
     }
