@@ -28,9 +28,9 @@ class TableComponent extends React.Component {
         )
     }
 
-    onClickBtn(id) {
-        this.props.onDeleteFormItem(id);
-        console.log("fun");
+    onClickDeleteBtn(id, authorization) {
+        debugger
+        this.props.onDeleteFormItem(id, authorization);
     }
 
     render() {
@@ -52,7 +52,7 @@ class TableComponent extends React.Component {
                                 </div>
                                 <Button bsClass='deleteBtn'
                                         onClick={() => {
-                                            this.onClickBtn(item.id)
+                                            this.onClickDeleteBtn(item.id, this.props.authorization)
                                         }}>delete
                                 </Button>
                             </td>
