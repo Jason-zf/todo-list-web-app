@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const initState = {
     formItems: [],
     item: {id: 0, name: '', tags: [], dueDate: '', status: ''},
@@ -17,22 +19,20 @@ const initState = {
 };
 
 
-const changeTotalStatisticData = (state, action) => {
+const changeTotalStatisticData = (state) => {
     let status = ['In progress', 'Blocked', 'To do'];
-    let items = state.searchResult.isShowSearchResult === true ? state.searchResult.searchedFormItems : state.formItems;
     return [
-        {title: status[0], value: items.filter(item => item.status === status[0]).length, color: '#16796b'},
-        {title: status[1], value: items.filter(item => item.status === status[1]).length, color: '#F75000'},
-        {title: status[2], value: items.filter(item => item.status === status[2]).length, color: '#6566FF'},
+        {title: status[0], value: state.formItems.filter(item => item.status === status[0]).length, color: '#16796b'},
+        {title: status[1], value: state.formItems.filter(item => item.status === status[1]).length, color: '#F75000'},
+        {title: status[2], value: state.formItems.filter(item => item.status === status[2]).length, color: '#6566FF'},
     ]
 };
 
-const changeOutDateStatisticData = (state, action) => {
+const changeOutDateStatisticData = (state, currentDate) => {
     let type = ['Out of Date', 'In 1 days', 'In 3 day'];
-    let items = state.searchResult.isShowSearchResult === true ? state.searchResult.searchedFormItems : state.formItems;
-    let value1 = items.filter(item => item.dueDate.diff(action.currentDate, 'days') < 0).length;
-    let value2 = items.filter(item => item.dueDate.diff(action.currentDate, 'days') === 0).length;
-    let value3 = items.filter(item => item.dueDate.diff(action.currentDate, 'days') === 2).length;
+    let value1 = state.formItems.filter(item => moment(item.dueDate).diff(currentDate, 'days') < 0).length;
+    let value2 = state.formItems.filter(item => moment(item.dueDate).diff(currentDate, 'days') === 0).length;
+    let value3 = state.formItems.filter(item => moment(item.dueDate).diff(currentDate, 'days') === 2).length;
     return [
         {
             title: type[0],
@@ -98,31 +98,7 @@ const reducer = (state = initState, action) => {
     let totalStatisticData = {};
     let outOfDateStatisticData = {};
     switch (action.type) {
-        case 'DELETE_TODO':
-            formItems = [...state.formItems];
-            formItems.splice(action.id, 1);
-            let state1 = {...state, formItems};
-            totalStatisticData = changeTotalStatisticData(state1, action);
-            outOfDateStatisticData = changeOutDateStatisticData(state1, action);
-            return {
-                ...state,
-                formItems: formItems,
-                statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
-            };
-        case 'CHANGE_STATISTIC_DATA':
-            let totalData = changeTotalStatisticData(state, action);
-            let outOfDateData = changeOutDateStatisticData(state, action);
-            return {...state, statisticData: {totalStatisticData: totalData, outOfDateStatisticData: outOfDateData}};
-        case 'SIMPLE_SEARCH':
-            let searchResult = updateSearchedFormItems(state, action);
-            let state2 = {...state, searchResult: searchResult};
-            totalStatisticData = changeTotalStatisticData(state2, action);
-            outOfDateStatisticData = changeOutDateStatisticData(state2, action);
-            return {
-                ...state,
-                searchResult: searchResult,
-                statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
-            };
+
         case 'ADVANCE_SEARCH':
             let advSearchResult = updateAdvSearchResult(state, action);
             let state3 = {...state, searchResult: advSearchResult};
@@ -138,7 +114,13 @@ const reducer = (state = initState, action) => {
             return {...state, formItems};
 
         case 'INIT':
-            return {...state, formItems: action.items};
+            let state4 = {...state, formItems: action.items};
+            totalStatisticData = changeTotalStatisticData(state4);
+            outOfDateStatisticData = changeOutDateStatisticData(state4, moment());
+            return {
+                ...state4,
+                statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
+            };
         case 'CHANGE_ITEM':
             debugger
             if (state.formItems.filter(it => it.id === action.currentId).length === 0) {

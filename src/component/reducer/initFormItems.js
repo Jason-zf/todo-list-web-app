@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const initFormItems = (dispatch, authorization) => {
     fetch("/todos", {
         method: 'GET',
@@ -14,7 +16,7 @@ const initFormItems = (dispatch, authorization) => {
                 id: item.id,
                 name: item.name,
                 tags: item.tags.map(tag => tag.name),
-                dueDate: new Date(item.dueDate),
+                dueDate: moment(item.dueDate),
                 status: item.status
             }));
             dispatch({type: 'INIT', items: items});

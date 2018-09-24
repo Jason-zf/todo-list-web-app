@@ -34,13 +34,12 @@ class TableComponent extends React.Component {
     }
 
     render() {
-        const showItems = this.props.searchResult.isShowSearchResult === false ? this.props.formItems : this.props.searchResult.searchedFormItems;
         return (
             <Table striped bordered condensed hover>
                 {this.renderHeader()}
                 <tbody>
                 {
-                    showItems.length > 0 && showItems.map(item => (
+                    this.props.formItems.map(item => (
                         <tr>
                             <td>{item.name}</td>
                             <td>{item.tags.join(', ')}</td>
