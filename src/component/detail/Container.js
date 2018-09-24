@@ -75,7 +75,6 @@ const mapDispatchToProps = (dispatch) => ({
             });
         }
     },
-    // onChangeCurrentId: (currentId) => dispatch({type: 'CHANGE_CURRENT_ID', currentId: currentId})
     onChangeItem: (currentId) => dispatch({type: 'CHANGE_ITEM', currentId: currentId})
 });
 

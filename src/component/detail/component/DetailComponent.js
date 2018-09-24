@@ -21,6 +21,7 @@ class DetailComponent extends React.Component {
     }
 
     onClickOk() {
+        debugger
         this.setState({
             redirect: true
         });
@@ -30,13 +31,15 @@ class DetailComponent extends React.Component {
         this.props.onAddNewFormItem(this.props.item, this.state.currentId, this.props.authorization);
     }
 
+    componentWillMount() {
+        this.props.onChangeItem(this.state.currentId);
+    }
 
     render() {
         debugger
         let name = 'action...';
         let title = 'Details of Action';
         if (this.state.currentId !== -1) {
-            this.props.onChangeItem(this.state.currentId);
             title += '-' + this.props.item.name;
             name = this.props.item.name;
         }
