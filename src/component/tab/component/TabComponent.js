@@ -11,7 +11,6 @@ class TabComponent extends React.Component {
     }
 
     componentWillMount() {
-        debugger
         this.props.initState(this.props.authorization);
     }
 

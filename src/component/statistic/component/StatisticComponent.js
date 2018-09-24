@@ -10,8 +10,6 @@ class StatisticComponent extends React.Component {
     }
 
     render() {
-        debugger
-        this.props.onChangeStatisticData(moment());
         return (
             <div>
                 <div className='searchContainer'>
