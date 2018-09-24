@@ -20,6 +20,7 @@ const initState = (dispatch, authorization) => {
     }).then(function (myJson) {
         if (myJson.content !== undefined) {
             let items = myJson.content.map(item => ({
+                id: item.id,
                 name: item.name,
                 tags: item.tags.map(tag => tag.name),
                 dueDate: new Date(item.dueDate),
@@ -35,25 +36,47 @@ const initState = (dispatch, authorization) => {
 
 const mapDispatchToProps = (dispatch) => ({
     onAddNewFormItem: (item, currentId, authorization) => {
-        fetch("/todos", {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'AUTHORIZATION': authorization
-            },
-            body: JSON.stringify({
-                "name": item.name,
-                "status": item.status,
-                "dueDate": item.dueDate,
-                "tags": item.tags.map(tag => ({name: tag}))
-            })
-        }).then(function (response) {
-            // debugger
-            initState(dispatch, authorization);
-        });
+        if (currentId === -1) {
+            fetch("/todos", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'AUTHORIZATION': authorization
+                },
+                body: JSON.stringify({
+                    "name": item.name,
+                    "status": item.status,
+                    "dueDate": item.dueDate,
+                    "tags": item.tags.map(tag => ({name: tag}))
+                })
+            }).then(function (response) {
+                // debugger
+                initState(dispatch, authorization);
+            });
+        } else {
+            fetch("/todos", {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'AUTHORIZATION': authorization
+                },
+                body: JSON.stringify({
+                    "id": currentId,
+                    "name": item.name,
+                    "status": item.status,
+                    "dueDate": item.dueDate,
+                    "tags": item.tags.map(tag => ({name: tag}))
+                })
+            }).then(function (response) {
+                // debugger
+                initState(dispatch, authorization);
+            });
+        }
     },
-    onChangeCurrentId: (currentId) => dispatch({type: 'CHANGE_CURRENT_ID', currentId: currentId})
+    // onChangeCurrentId: (currentId) => dispatch({type: 'CHANGE_CURRENT_ID', currentId: currentId})
+    onChangeItem: (currentId) => dispatch({type: 'CHANGE_ITEM', currentId: currentId})
 });
 
 

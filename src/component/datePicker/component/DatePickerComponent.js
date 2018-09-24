@@ -11,10 +11,9 @@ class DatePickerComponent extends React.Component {
             startDate: null,
             endDate: null
         };
-        if (this.props.currentId !== -1 && this.props.formItems[this.props.currentId] !== undefined && this.props.formItems[this.props.currentId].dueDate !== undefined) {
-            this.state.startDate = this.props.formItems[this.props.currentId].dueDate;
+        if (this.props.item !== undefined && this.props.item.dueDate !== undefined) {
+            this.state.startDate = this.props.item.dueDate;
         }
-        this.props.item.dueDate = this.state.startDate;
     }
 
     handleChange(date) {

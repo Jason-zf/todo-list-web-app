@@ -39,9 +39,9 @@ class SelectorComponent extends React.Component {
     render() {
         const {selectedOption} = this.state;
         let statusPlaceholder = 'Select...', tagPlaceholder = 'Select...';
-        if (this.props.currentId !== undefined && this.props.formItems[this.props.currentId] !== undefined) {
-            tagPlaceholder = this.props.formItems[this.props.currentId].tags.join(", ");
-            statusPlaceholder = this.props.formItems[this.props.currentId].status;
+        if (this.props.item !== undefined && this.props.item.tags.length !== 0) {
+            tagPlaceholder = this.props.item.tags.join(', ');
+            statusPlaceholder = this.props.item.status;
         }
         return (
             <div>

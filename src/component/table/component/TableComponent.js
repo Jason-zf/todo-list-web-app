@@ -40,7 +40,7 @@ class TableComponent extends React.Component {
                 {this.renderHeader()}
                 <tbody>
                 {
-                    showItems.length > 0 && showItems.map((item, index) => (
+                    showItems.length > 0 && showItems.map(item => (
                         <tr>
                             <td>{item.name}</td>
                             <td>{item.tags.join(', ')}</td>
@@ -48,11 +48,11 @@ class TableComponent extends React.Component {
                             <td>{item.status}</td>
                             <td>
                                 <div className='detailContainer'>
-                                    <Link to={`/detail/${index}`}>detail</Link>
+                                    <Link to={`/detail/${item.id}`}>detail</Link>
                                 </div>
                                 <Button bsClass='deleteBtn'
                                         onClick={() => {
-                                            this.onClickBtn(index)
+                                            this.onClickBtn(item.id)
                                         }}>delete
                                 </Button>
                             </td>
@@ -75,7 +75,7 @@ class TableComponent extends React.Component {
     }
 
     onClickAddBtn() {
-        this.props.item.id = this.props.formItems.length;
+        this.props.onChangeItem(-1);
         this.setState({
             redirect: true
         })

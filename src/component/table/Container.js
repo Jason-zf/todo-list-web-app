@@ -12,6 +12,7 @@ const mapStateToProps = ({data}) => (
 const mapDispatchToProps = (dispatch) => (
     {
         onDeleteFormItem: (id) => dispatch({type: 'DELETE_TODO', id: id}),
+        onChangeItem: (currentId) => dispatch({type: 'CHANGE_ITEM', currentId: currentId})
     }
 );
 

@@ -32,19 +32,13 @@ class DetailComponent extends React.Component {
 
 
     render() {
-        let item = {
-            name: 'action...',
-            tags: [],
-            dueDate: '',
-            status: ''
-        };
+        debugger
+        let name = 'action...';
         let title = 'Details of Action';
-        let id = parseInt(this.props.match.params.id, 10);
-        if (id !== -1) {
-            item = this.props.formItems[id];
-            title += '-' + item.name;
-            this.props.onChangeCurrentId(id);
-
+        if (this.state.currentId !== -1) {
+            this.props.onChangeItem(this.state.currentId);
+            title += '-' + this.props.item.name;
+            name = this.props.item.name;
         }
         return (
             <div className='detailPage'>
@@ -60,7 +54,7 @@ class DetailComponent extends React.Component {
                                     Action:
                                 </Col>
                                 <Col sm={8}>
-                                    <FormControl type="email" placeholder={item.name} inputRef={ref => {
+                                    <FormControl type="email" placeholder={name} inputRef={ref => {
                                         this.input = ref;
                                     }}/>
                                 </Col>

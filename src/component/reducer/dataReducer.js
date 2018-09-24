@@ -1,7 +1,6 @@
 const initState = {
     formItems: [],
     item: {id: 0, name: '', tags: [], dueDate: '', status: ''},
-    currentId: -1,
     statisticData: {
         totalStatisticData: [],
         outOfDateStatisticData: []
@@ -17,15 +16,6 @@ const initState = {
     }
 };
 
-function addOrUpdateToDoList(state, action) {
-    let formItems = state.formItems;
-    if (action.currentId !== action.item.id) {
-        formItems.push(action.item);
-    } else {
-        formItems[action.currentId] = action.item;
-    }
-    return formItems;
-}
 
 const changeTotalStatisticData = (state, action) => {
     let status = ['In progress', 'Blocked', 'To do'];
@@ -38,7 +28,6 @@ const changeTotalStatisticData = (state, action) => {
 };
 
 const changeOutDateStatisticData = (state, action) => {
-    debugger
     let type = ['Out of Date', 'In 1 days', 'In 3 day'];
     let items = state.searchResult.isShowSearchResult === true ? state.searchResult.searchedFormItems : state.formItems;
     let value1 = items.filter(item => item.dueDate.diff(action.currentDate, 'days') < 0).length;
@@ -120,14 +109,6 @@ const reducer = (state = initState, action) => {
                 formItems: formItems,
                 statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
             };
-        case 'CHANGE_CURRENT_ID':
-            let currentId = action.currentId;
-            state.item.name = state.formItems[currentId].name;
-            state.item.status = state.formItems[currentId].status;
-            state.item.dueDate = state.formItems[currentId].dueDate;
-            state.item.tags = state.formItems[currentId].tags;
-            state.item.id = currentId;
-            return {...state, currentId};
         case 'CHANGE_STATISTIC_DATA':
             let totalData = changeTotalStatisticData(state, action);
             let outOfDateData = changeOutDateStatisticData(state, action);
@@ -157,8 +138,13 @@ const reducer = (state = initState, action) => {
             return {...state, formItems};
 
         case 'INIT':
-            debugger
             return {...state, formItems: action.items};
+        case 'CHANGE_ITEM':
+            debugger
+            if (state.formItems.filter(it => it.id === action.currentId).length === 0) {
+                return {...state, item: undefined};
+            }
+            return {...state, item: state.formItems.filter(it => it.id === action.currentId)[0]};
         default:
             return state;
     }

@@ -5,7 +5,6 @@ const mapStateToProps = ({data}) => (
     {
         formItems: data.formItems,
         item: data.item,
-        currentId: data.currentId,
         advSearch: data.advSearch
     }
 );
