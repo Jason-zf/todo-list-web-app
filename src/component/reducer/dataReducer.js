@@ -11,7 +11,8 @@ const initState = {
         tags: [],
         startDate: null,
         endDate: null
-    }
+    },
+    tags: []
 };
 
 
@@ -65,6 +66,8 @@ const reducer = (state = initState, action) => {
                 return {...state, item: {id: 0, name: '', tags: [], dueDate: '', status: ''}};
             }
             return {...state, item: state.formItems.filter(it => it.id === action.currentId)[0]};
+        case 'INIT_TAGS':
+            return {...state, tags: action.tags};
         default:
             return state;
     }

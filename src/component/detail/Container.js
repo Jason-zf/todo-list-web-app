@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import DetailComponent from "./component/DetailComponent";
 import initFormItems from "../reducer/initFormItems";
+import initTags from "../reducer/initTags";
 
 const mapStateToProps = ({login, data}) => ({
     formItems: data.formItems,
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
             }).then(function (response) {
                 // debugger
                 initFormItems("/todos", dispatch, authorization);
+                initTags(dispatch, authorization);
             });
         } else {
             fetch("/todos", {
@@ -47,6 +49,7 @@ const mapDispatchToProps = (dispatch) => ({
             }).then(function (response) {
                 // debugger
                 initFormItems("/todos", dispatch, authorization);
+                initTags(dispatch, authorization);
             });
         }
     },

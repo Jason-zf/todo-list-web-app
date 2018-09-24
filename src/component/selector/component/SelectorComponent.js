@@ -9,15 +9,17 @@ class SelectorComponent extends React.Component {
             selectedOption: null
         };
 
-        this.tagsOptions = [
-            {value: 'c', label: 'C'},
-            {value: 'c++', label: 'C++'},
-            {value: 'c#', label: 'C#'},
-            {value: 'java', label: 'Java'},
-            {value: 'javascript', label: 'JavaScript'},
-            {value: 'ruby', label: 'Ruby'},
-            {value: 'python', label: 'Python'}
-        ];
+        // this.tagsOptions = [
+        //     {value: 'c', label: 'C'},
+        //     {value: 'c++', label: 'C++'},
+        //     {value: 'c#', label: 'C#'},
+        //     {value: 'java', label: 'Java'},
+        //     {value: 'javascript', label: 'JavaScript'},
+        //     {value: 'ruby', label: 'Ruby'},
+        //     {value: 'python', label: 'Python'}
+        // ];
+
+        this.tagsOptions = this.props.tags;
         this.statusOptions = [
             {value: 'todo', label: 'To do'},
             {value: 'in progress', label: 'In progress'},
