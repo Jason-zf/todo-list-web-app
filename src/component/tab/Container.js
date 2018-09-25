@@ -1,7 +1,7 @@
 import TabComponent from './component/TabComponent';
 import {connect} from "react-redux";
-import initFormItems from "../reducer/initFormItems";
-import initTags from "../reducer/initTags";
+import initFormItems from "../../services/initFormItems";
+import initTags from "../../services/initTags";
 
 const mapStateToProps = ({login}) => ({
         logged: login.isAuthenticated,

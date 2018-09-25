@@ -1,6 +1,6 @@
 import SearchComponent from './component/SearchComponent';
 import {connect} from "react-redux";
-import initFormItems from "../reducer/initFormItems";
+import initFormItems from "../../services/initFormItems";
 
 const mapStateToProps = ({login}) => ({
     authorization: login.authorization

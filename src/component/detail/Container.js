@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import DetailComponent from "./component/DetailComponent";
-import initFormItems from "../reducer/initFormItems";
-import initTags from "../reducer/initTags";
+import initFormItems from "../../services/initFormItems";
+import initTags from "../../services/initTags";
 
 const mapStateToProps = ({login, data}) => ({
     formItems: data.formItems,

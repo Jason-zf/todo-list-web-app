@@ -1,7 +1,6 @@
 import SortBtn from './SortBtn';
 import {connect} from "react-redux";
-import moment from "moment";
-import initFormItems from "../../reducer/initFormItems";
+import initFormItems from "../../../services/initFormItems";
 
 const mapStateToProps = ({login}) => ({
     authorization: login.authorization

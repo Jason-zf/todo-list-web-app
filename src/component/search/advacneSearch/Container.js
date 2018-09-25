@@ -1,6 +1,6 @@
 import AdvSearchComponent from './component/AdvSearchComponent';
 import {connect} from "react-redux";
-import initFormItems from "../../reducer/initFormItems";
+import initFormItems from "../../../services/initFormItems";
 import moment from "moment";
 
 const mapStateToProps = ({login, data}) => ({

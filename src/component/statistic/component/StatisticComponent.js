@@ -1,7 +1,6 @@
 import React from "react";
 import View from "../../search";
 import PieChart from "../../chart";
-import moment from "moment";
 
 class StatisticComponent extends React.Component {
     constructor(props) {

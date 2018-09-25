@@ -9,6 +9,7 @@ const initTags = (dispatch, authorization) => {
     }).then(function (response) {
         return response.json();
     }).then(function (myJson) {
+        debugger
         if (myJson !== undefined) {
             let tags = myJson.map(tag => ({
                 value: tag.name,

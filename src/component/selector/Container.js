@@ -1,6 +1,5 @@
 import SelectorComponent from './component/SelectorComponent';
 import {connect} from "react-redux";
-import moment from "moment";
 
 const mapStateToProps = ({login, data}) => (
     {

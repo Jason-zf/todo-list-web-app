@@ -1,6 +1,6 @@
 import TableComponent from './component/TableComponent';
 import {connect} from "react-redux";
-import initFormItems from "../reducer/initFormItems";
+import initFormItems from "../../services/initFormItems";
 
 const mapStateToProps = ({login, data}) => (
     {

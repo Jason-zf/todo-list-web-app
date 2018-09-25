@@ -11,6 +11,7 @@ const initFormItems = (server, dispatch, authorization) => {
     }).then(function (response) {
         return response.json();
     }).then(function (myJson) {
+        debugger
         if (myJson.content !== undefined) {
             let items = myJson.content.map(item => ({
                 id: item.id,
