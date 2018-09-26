@@ -1,10 +1,10 @@
 const initTags = (dispatch, authorization) => {
-    fetch("/tags", {
+    fetch("/api/tags", {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'AUTHORIZATION': authorization
+            'token': authorization
         }
     }).then(function (response) {
         return response.json();

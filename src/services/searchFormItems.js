@@ -1,7 +1,5 @@
-import moment from "moment";
-
-const initFormItems = (server, dispatch, authorization) => {
-    fetch("/api"+server, {
+const searchFormItems = (dispatch, keywords, authorization) => {
+    fetch(`/api/todos/search/${keywords}`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -17,9 +15,10 @@ const initFormItems = (server, dispatch, authorization) => {
                 id: item.id,
                 name: item.name,
                 tags: item.tags.map(tag => tag.name),
-                dueDate: moment(item.dueDate),
+                dueDate: new Date(item.dueDate),
                 status: item.status
             }));
+            debugger
             dispatch({type: 'INIT', items: items});
         } else {
             alert("empty todo list");
@@ -28,4 +27,4 @@ const initFormItems = (server, dispatch, authorization) => {
     });
 };
 
-export default initFormItems;
+export default searchFormItems;

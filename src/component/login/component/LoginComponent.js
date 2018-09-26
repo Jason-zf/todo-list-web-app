@@ -14,6 +14,7 @@ class LoginComponent extends React.Component {
     }
 
     onClickOkBtn() {
+        debugger
         this.props.onLogin(this.username.value, this.password.value);
     }
 
