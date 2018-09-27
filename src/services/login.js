@@ -1,5 +1,5 @@
 const login = (dispatch, username, password) => {
-    fetch("/api/login", {
+    fetch("/api/users/login", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

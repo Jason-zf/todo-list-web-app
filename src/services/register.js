@@ -1,5 +1,5 @@
 const register = (dispatch, username, password) => {
-    fetch("/api/registration", {
+    fetch("/api/users/registration", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
