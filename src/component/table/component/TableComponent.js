@@ -74,6 +74,7 @@ class TableComponent extends React.Component {
     }
 
     onClickAddBtn() {
+        debugger
         this.props.onChangeTableItem(-1);
         this.setState({
             redirect: true

@@ -6,7 +6,8 @@ import createFormItem from "../../services/createFormItem";
 const mapStateToProps = ({login, data}) => ({
     formItems: data.formItems,
     item: data.item,
-    authorization: login.authorization
+    authorization: login.authorization,
+    logged: login.isAuthenticated
 });
 
 

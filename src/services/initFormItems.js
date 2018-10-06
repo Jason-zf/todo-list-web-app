@@ -22,7 +22,6 @@ const initFormItems = (server, dispatch, authorization) => {
             }));
             dispatch({type: 'INIT', items: items});
         } else {
-            // alert("empty todo list");
             dispatch({type: 'INIT', items: []});
         }
     });

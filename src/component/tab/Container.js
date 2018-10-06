@@ -12,8 +12,10 @@ const mapStateToProps = ({login}) => ({
 const mapDispatchToProps = (dispatch) => ({
     initState: (authorization) => {
         console.log(authorization);
-        initFormItems("/todos", dispatch, authorization);
-        initTags(dispatch, authorization);
+        if (authorization !== '') {
+            initFormItems("/todos", dispatch, authorization);
+            initTags(dispatch, authorization);
+        }
     }
 });
 

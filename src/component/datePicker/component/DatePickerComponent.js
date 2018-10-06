@@ -61,7 +61,6 @@ class DatePickerComponent extends React.Component {
                                 dateFormat='YYYY/MM/DD'
                                 selected={this.state.startDate}
                                 selectsStart
-                                dateFormat='YYYY/MM/DD'
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
                                 onChange={this.handleChangeStart.bind(this)}
@@ -74,7 +73,6 @@ class DatePickerComponent extends React.Component {
                                 dateFormat='YYYY/MM/DD'
                                 selected={this.state.endDate}
                                 selectsEnd
-                                dateFormat='YYYY/MM/DD'
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
                                 onChange={this.handleChangeEnd.bind(this)}

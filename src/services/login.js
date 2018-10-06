@@ -14,6 +14,7 @@ const login = (dispatch, username, password) => {
             console.log(response.headers.get("token"));
             dispatch({type: 'LOGIN', isAuthenticated: true, authorization: response.headers.get("token")});
         } else {
+            alert('This user is not found, please register first!');
             dispatch({type: 'LOGIN', isAuthenticated: false, authorization: ""});
         }
     })

@@ -59,7 +59,8 @@ const reducer = (state = initState, action) => {
             outOfDateStatisticData = changeOutDateStatisticData(state4, moment());
             return {
                 ...state4,
-                statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData}
+                statisticData: {totalStatisticData: totalStatisticData, outOfDateStatisticData: outOfDateStatisticData},
+                item: {id: 0, name: '', tags: [], dueDate: '', status: ''}
             };
         case 'CHANGE_ITEM':
             if (state.formItems.filter(it => it.id === action.currentId).length === 0) {
@@ -67,7 +68,7 @@ const reducer = (state = initState, action) => {
             }
             return {...state, item: state.formItems.filter(it => it.id === action.currentId)[0]};
         case 'INIT_TAGS':
-            return {...state, tags: action.tags};
+            return {...state, tags: action.tags, item: {id: 0, name: '', tags: [], dueDate: '', status: ''}};
         default:
             return state;
     }
