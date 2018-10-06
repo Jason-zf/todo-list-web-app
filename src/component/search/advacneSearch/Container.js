@@ -10,10 +10,11 @@ const mapStateToProps = ({login, data}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onClickAdvSearchBtn: (isClickOkBtn, authorization, advSearch) => {
-        let server = '/todos';
+        let server = '/api/todos';
         if (advSearch.tags.length !== 0) {
             server += '?tag=' + advSearch.tags;
         }
+        debugger
         if (advSearch.startDate !== null && advSearch.endDate !== null) {
             if (advSearch.tags.length === 0)
                 server += '?from=' + advSearch.startDate.format('YYYY/MM/DD') + '&to=' + advSearch.endDate.format('YYYY/MM/DD');
@@ -26,9 +27,10 @@ const mapDispatchToProps = (dispatch) => ({
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'AUTHORIZATION': authorization
+                    'token': authorization
                 }
             }).then(function (response) {
+                debugger
                 return response.json();
             }).then(function (myJson) {
                 debugger

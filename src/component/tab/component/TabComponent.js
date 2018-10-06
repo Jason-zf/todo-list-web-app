@@ -30,7 +30,7 @@ class TabComponent extends React.Component {
                     </TabController>
                 }
                 {
-                    !this.props.logged && <Redirect to='/login'/>
+                    !this.props.logged && <Redirect to='/'/>
                 }
             </div>
         )

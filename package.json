@@ -2,7 +2,7 @@
   "name": "react-redux-to-do-list",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:8088",
   "dependencies": {
     "adapter": "0.0.1",
     "enzyme": "^3.6.0",
